@@ -3,23 +3,23 @@
     <header-bar/>
     <div class="page-inside" v-if="item">
       <div class="title">
-        <span>katalogové číslo: </span>
+        <span>catalog number: </span>
         <strong>{{ item.id }}</strong>
       </div>
       <div class="subtitle" v-if="product">
-        <span>produkt: </span>
+        <span>product: </span>
         <router-link :to="'/product/' + product.id">
           <strong>{{ product.name }}</strong>
         </router-link>
       </div>
       <div class="subtitle" v-if="family">
-        <span>patří do produktové skupiny: </span>
+        <span>product family: </span>
         <router-link :to="'/family/' + family.id">
           <strong>{{ family.name }}</strong>
         </router-link>
       </div>
       <div class="subtitle">
-        <span>licence a podpora: </span>
+        <span>license and support: </span>
         <strong>{{ license }}</strong>
       </div>
     </div>

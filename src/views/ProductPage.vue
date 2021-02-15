@@ -3,18 +3,18 @@
     <header-bar/>
     <div class="page-inside" v-if="product">
       <div class="title">
-        <span>produkt: </span>
+        <span>product: </span>
         <strong>{{ product.name }}</strong>
       </div>
       <div class="subtitle" v-if="family">
-        <span>patří do produktové skupiny: </span>
+        <span>product family: </span>
         <router-link :to="'/family/' + family.id">
           <strong>{{ family.name }}</strong>
         </router-link>
       </div>
       <div>
         <div class="subtitle">
-          <span>obsahuje katalogová čísla</span>
+          <span>available catalog numbers</span>
         </div>
         <ul class="product-list">
           <li v-for="item of items" :key="item.id" @click="onItemClick(item.id)">{{ item.id + ', ' + item.license}}</li>

@@ -30,4 +30,5 @@ a
   flex-direction: column
   justify-content: space-between
   padding: 20px
+  height: 100vh
 </style>

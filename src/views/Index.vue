@@ -2,7 +2,7 @@
   <div class="page">
     <header-bar/>
     <div class="central-page">
-      <h1>vítejte v aplikaci</h1>
+      <h1>welcome</h1>
     </div>
     <footer-bar/>
   </div>
@@ -19,7 +19,6 @@ export default {
 <style lang="stylus" scoped>
 
 .central-page
-  flex: 1
   display: flex
   flex-direction: column
   justify-content: center

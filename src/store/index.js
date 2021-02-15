@@ -8,9 +8,9 @@ export default new Vuex.Store({
   state: {
     pswEnc: 'Q29udHJvbFRlY2gyMDIx',
     authorized: false,
-    title: 'přehled softwarových produktů Rockwell Automation',
+    title: 'Rockwell Automation software products overview',
     licenses: {
-      'C0': 'Subscription / Updates',
+      'C0': 'Subscription / Self Support',
       'C1': 'Subscription / 8-5, M-F Support',
       'C2': 'Subscription / 24x7 Support',
       'M0': 'Perpetual / Self Support',

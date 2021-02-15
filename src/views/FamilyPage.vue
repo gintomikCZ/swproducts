@@ -3,12 +3,12 @@
     <header-bar/>
     <div class="page-inside" v-if="this.family">
       <div class="title">
-        <span>produktová skupina: </span>
+        <span>product family: </span>
         <strong>{{ family.name }}</strong>
       </div>
       <div>
         <div class="title">
-          <span>obsahuje produkty</span>
+          <span>available products</span>
         </div>
         <ul class="product-list">
           <li v-for="product of products" :key="product.id" @click="onItemClick(product.id)">{{ product.name }}</li>
@@ -30,7 +30,9 @@ export default {
   },
   computed: {
     family () {
-      return this.$store.getters.getFamily(this.familyId)
+      return this.$store.state.products.families.find(family => {
+        return '' + family.id === this.familyId
+      })
     },
     products () {
       return this.$store.state.products.products.filter(product => {
@@ -57,17 +59,19 @@ export default {
 <style lang="stylus">
 .page-inside
   flex: 1
+  max-height: calc(100vh - 198px)
+  overflow: auto
   padding: 20px
   display: flex
   flex-direction: column
   justify-content: flex-start
   align-items: flex-start
 .title
-  font-size: 1.5rem
+  font-size: 1.2rem
   margin: 20px 0
   text-align: left
 .subtitle
-  font-size: 1.2rem
+  font-size: 1rem
   margin: 20px 0
   text-align: left
 .product-list
@@ -78,9 +82,10 @@ export default {
   border-radius: 4px
   & li
     padding: .5em .75em
-    font-size: 1rem
+    font-size: .9rem
     cursor: pointer
     text-align: left
+    transition: background-color .4s ease-in-out
     &:hover
       background: #faff81
     &:not(:last-child)

@@ -2,12 +2,12 @@
 <div class="total-header-bar">
   <div class="header-bar">
     <img alt="home" class="header-bar-logo" src="../assets/logo50.png"/>
-    <div class="header-right">RA software</div>
+    <div class="header-right">Rockwell Automation software</div>
   </div>
   <div class="inputs-row">
-    <input-select :value="family" placeholder="vyberte skupinu" :options="families" @input="onFamilyInput" />
-    <input-select :value="product" placeholder="vyberte produkt" :options="products" @input="onProductInput" />
-    <input-select :value="item" :options="items" placeholder="vyberte kat. číslo" @input="onItemInput" />
+    <input-select :value="family" placeholder="product family" :options="families" @input="onFamilyInput" />
+    <input-select :value="product" placeholder="product" :options="products" @input="onProductInput" />
+    <input-select :value="item" :options="items" placeholder="catalog number" @input="onItemInput" />
   </div>
 </div>
 </template>
@@ -29,17 +29,17 @@ export default {
     families () {
       return this.$store.state.products.families.map(family => {
         return { label: family.name, value: family.id }
-      })
+      }).sort((a, b) => a.label.localeCompare(b.label))
     },
     products () {
       return this.$store.state.products.products.map(product => {
         return { label: product.name, value: product.id }
-      })
+      }).sort((a, b) => a.label.localeCompare(b.label))
     },
     items () {
       return this.$store.state.products.items.map(item => {
         return { label: item.id, value: item.id }
-      })
+      }).sort((a, b) => a.label.localeCompare(b.label))
     }
   },
   methods: {
@@ -67,7 +67,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .total-.header-bar
-  flex: 0 0 auto
+  flex: 0 0 132px
 .header-bar
   display: flex
   justify-content: space-between

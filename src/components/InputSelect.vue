@@ -1,5 +1,5 @@
 <template>
-    <div class="p-relative">
+    <div class="p-relative" ref="myContainer">
       <input
         v-model="search"
         :placeholder="placeholder"
@@ -9,8 +9,8 @@
         @keyup.arrow-up="onKeyupArrowUp"
         @keyup.enter="onKeyupEnter"
         />
-      <transition name="grow-down">
-        <div ref="body" v-if="show" class="select-body" tabindex="0" @blur="onBlur">
+      <transition name="grow-down" @after-enter="afterEnter" @after-leave="afterLeave">
+        <div ref="body" v-if="show" class="select-body">
           <div
             v-for="(option, index) in filteredOptions"
             :key="option.value" class="select-body-item"
@@ -46,7 +46,13 @@ export default {
     onFocus () {
       this.show = true
     },
-    onBlur () {
+    afterLeave () {
+      document.removeEventListener('click', this.close)
+    },
+    afterEnter () {
+      document.addEventListener('click', this.close)
+    },
+    close () {
       this.show = false
     },
     onItemClick (v) {
@@ -109,6 +115,7 @@ export default {
   z-index: 9
   min-width: 120%
 .select-body-item
+  font-size: 0.9rem
   text-align: left
   padding: .5em .75em
   cursor: pointer

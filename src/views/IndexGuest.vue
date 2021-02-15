@@ -6,8 +6,8 @@
         <h1>{{ title }}</h1>
       </div>
       <div class="container">
-        <p>Tato aplikace je určena k internímu užití v rámci společnosti ControlTech s.r.o.</p>
-        <p>Zadejte prosím heslo.</p>
+        <p>This area is restricted for internal use within the company ControlTech s.r.o.</p>
+        <p>Please, enter the password.</p>
       </div>
       <div class="container">
         <login />
